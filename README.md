@@ -1,2 +1,2 @@
 # bookstore
-simple rest api with node and mongp/mongoose
+Simple RestAPI with node and mongoDB/mongoose
