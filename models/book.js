@@ -66,5 +66,12 @@ module.exports.updateBook = function(id, book, options, callback) {
       image_url: book.image_url,
       buy_url: book.buy_url
     };
-  Book.findOneAndUpdate(query, update, options, callback);
+  Book.findOneAndUpdate(query, {$set:update}, options, callback);
+};
+
+
+//Delete Book
+module.exports.deleteBook = function(id, callback) {
+    var query = { _id: id };
+  Book.remove(query, callback);
 };

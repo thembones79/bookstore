@@ -52,6 +52,17 @@ app.put("/api/genres/:_id", function(req, res) {
   });
 });
 
+app.delete("/api/genres/:_id", function(req, res) {
+  var id = req.params._id;
+
+  Genre.deleteGenre(id, function(err, genre) {
+    if (err) {
+      throw err;
+    }
+    res.json(genre);
+  });
+});
+
 app.get("/api/books", function(req, res) {
   Book.getBooks(function(err, book) {
     if (err) {
@@ -86,11 +97,25 @@ app.get("/api/books/:_id", function(req, res) {
 app.put("/api/books/:_id", function(req, res) {
   var id = req.params._id;
   var book = req.body;
-  Book.updateBook(id, book, {}, function(err, book) {
+  Book.updateBook(id, book, { new: true, useFindAndModify : false}, function(
+    err,
+    book
+  ) {
     if (err) {
       throw err;
     }
     res.json(book);
+  });
+});
+
+app.delete("/api/books/:_id", function(req, res) {
+  var id = req.params._id;
+
+  Book.deleteBook(id, function(err, data) {
+    if (err) {
+      throw err;
+    }
+    res.json(data);
   });
 });
 
