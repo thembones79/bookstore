@@ -12,5 +12,5 @@
     "mongoose": "*"
   },
   "author": "Michal Szumnarski",
-  "license": "ISC"
+  "license": "MIT"
 }
